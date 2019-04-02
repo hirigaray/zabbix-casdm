@@ -1,0 +1,38 @@
+* {
+	font-family: sans-serif;
+}
+
+body {
+	margin: auto;
+	max-width: 90%;
+	line-height: 1.6;
+	font-size: 18px;
+	color: #444;
+	padding-bottom: 5%
+}
+
+div.header {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td, th {
+	border: solid 1px #9f9f9f;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+td {
+	text-align: center;
+}
+
+h1,h2,h3 {
+	line-height: 2.0
+}

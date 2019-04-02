@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/simple-event.css">
+	<title>Integração Zabbix-CA</title>
+</head>
+<body>
+	<!-- Criar cabeçalho. -->
+	<div class="header" >
+		<h3>Lista de eventos registrados.</h3>
+	</div>
+	<table>
+		<!-- Criar cabeçalho da tabela. -->
+		<thead>
+			<tr>
+				<th>ID no Zabbix</th>
+				<th>Chamado no CA</th>
+				<!-- <th>Estado no CA</th> -->
+			</tr>
+		</thead>
+		<!-- Criar lista de incidentes. -->
+		<tbody>
+			<!-- Este código é lido pelo html/template. Os eventos são criados um por linha. -->
+			{{range $_, $event := .}}
+			<tr>
+				<td>{{$event.ZabbixID}}</td>
+				<td>{{$event.CAID}}</td>
+				<!-- <td>{{$event.CAStatus}}</td> -->
+			</tr>
+			{{end}}
+		</tbody>
+	</table>
+</body>
+</html>

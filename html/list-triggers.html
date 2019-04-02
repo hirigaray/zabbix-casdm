@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/simple-trigger.css">
+	<title>Integração Zabbix-CA</title>
+</head>
+<body>
+	<div class="header" >
+		<h3>Lista de triggers disponíveis no Zabbix.</h3>
+	</div>
+	<!-- Criar tabela com todos os incidentes. -->
+	<table>
+		<!-- Criar cabeçalhos. -->
+		<thead>
+			<tr>
+				<th>Nome do Host</th>
+				<th>Descrição do Trigger</th>
+				<th>Enviar para o CA?</th>
+			</tr>
+		</thead>
+		<!-- Criar a lista de incidentes. -->
+		<tbody>
+			<form method="post" name="triggers" action="/post-triggers" >
+				<!-- Este código é o código que é lido pelo template. O range faz com que cada incidente seja criado, um por linha. -->
+				{{range $_, $trigger := .}}
+				<tr>
+					<!-- Todos os incidentes terão campos como nos cabeçalhos. -->
+					<td>{{$trigger.HostName}}</td>
+					<td>{{$trigger.TriggerDescription}}</td>
+					<!-- Aqui são criados os checkboxes... -->
+					<td>
+						<input type="checkbox" name="send_to_ca" value="{{$trigger.TriggerID}}"
+						{{ if $trigger.SendToCA }} checked {{ end }}>
+						<!-- ^ Se estiverem ativados na database, serão criados como preenchidos. ^ -->
+					</td>
+				</tr>
+				{{end}}
+				<!-- Botão para submeter o formulário. -->
+				<div class="refresh">
+					<input type="submit" value="Atualizar">
+				</div>
+			</form>
+		</tbody>
+	</table>
+</body>
+</html>
